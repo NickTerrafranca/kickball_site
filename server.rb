@@ -13,9 +13,14 @@ end
 get('/') do
   @all_players = read_team_data
   @teams = []
+  @player_position = []
   @all_players.each do |player_hash|
+
     if !@teams.include?(player_hash[:team])
       @teams << player_hash[:team]
+    end
+    if !@player_position.include?(player_hash[:position])
+      @player_position << player_hash[:position]
     end
   end
   erb :index
@@ -30,7 +35,25 @@ get('/teams/:team_name') do
     if player[:team] == @team_name
       @roster << player
     end
-    "#{@roster}"
+    @roster
   end
   erb :show
 end
+
+
+get('/positions/:position') do
+  @position = params[:position]
+  @all_players = read_team_data
+  @player_positions = []
+  @all_players.each do |player|
+
+    if player[:position] == @position
+      @player_positions  << player
+    end
+    @player_positions
+  end
+    erb :position
+end
+
+# :first_name,:last_name,:position,:team
+
