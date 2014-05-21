@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <title>League of Cool Kickball Professionals - Roster</title>
-
 </head>
-
 <body>
+
   <h1>League of Cool Kickball Professionals - Roster</h1>
 
   <h2>Teams</h2>
 
   <ul>
     <% @teams.each do |team| %>
+
     <li>
       <a href="<%="/teams/#{team}" %>">
         <%="#{team}" %>
@@ -19,15 +19,14 @@
     </li>
     <% end %>
   </ul>
-
   <h2>Position</h2>
 
   <ul>
     <% @player_position.each do |position| %>
     <li>
-    <a href="<%="/positions/#{position}" %>">
-    <%="#{position}" %>
-    </a>
+      <a href="<%="/positions/#{position}" %>">
+        <%="#{position}" %>
+      </a>
     </li>
     <% end %>
   </ul>
