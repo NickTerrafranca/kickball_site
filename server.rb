@@ -11,14 +11,15 @@ def read_team_data
 end
 
 get('/') do
-  @all_players = read_team_data
+  all_players = read_team_data
   @teams = []
   @player_position = []
-  @all_players.each do |player_hash|
+  all_players.each do |player_hash|
 
     if !@teams.include?(player_hash[:team])
       @teams << player_hash[:team]
     end
+
     if !@player_position.include?(player_hash[:position])
       @player_position << player_hash[:position]
     end
@@ -27,12 +28,12 @@ get('/') do
 end
 
 get('/teams/:team_name') do
-  @team_name = params[:team_name]
-  @all_players = read_team_data
+  team_name = params[:team_name]
+  all_players = read_team_data
   @roster = []
-  @all_players.each do |player|
+  all_players.each do |player|
 
-    if player[:team] == @team_name
+    if player[:team] == team_name
       @roster << player
     end
     @roster
@@ -42,12 +43,12 @@ end
 
 
 get('/positions/:position') do
-  @position = params[:position]
-  @all_players = read_team_data
+  position = params[:position]
+  all_players = read_team_data
   @player_positions = []
-  @all_players.each do |player|
+  all_players.each do |player|
 
-    if player[:position] == @position
+    if player[:position] == position
       @player_positions  << player
     end
     @player_positions
