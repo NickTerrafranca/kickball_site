@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>League of Cool Kickball Professionals - Roster</title>
+
+</head>
+
+<body>
+  <h1>League of Cool Kickball Professionals - Roster</h1>
+
+  <ul>
+    <% @teams.each do |team| %>
+    <li>
+      <a href="<%="/teams/#{team}" %>">
+        <%="#{team}" %>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+
+</body>
+</html>
