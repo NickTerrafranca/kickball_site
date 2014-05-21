@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'csv'
-require 'pry'
 
 def read_team_data
   players = []
@@ -55,6 +54,3 @@ get('/positions/:position') do
   end
     erb :position
 end
-
-# :first_name,:last_name,:position,:team
-
