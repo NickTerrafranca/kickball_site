@@ -1,0 +1,9 @@
+<h1><%= "#{@player_positions[0][:position]}"%></h1>
+
+<ul>
+  <% @player_positions.each do |player| %>
+  <li>
+    <%= "#{player[:first_name]} #{player[:last_name]}" %>
+  </li>
+  <% end %>
+</ul>
