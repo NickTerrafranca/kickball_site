@@ -10,17 +10,14 @@ def read_team_data
   players
 end
 
-
 get('/') do
   @all_players = read_team_data
-
   @teams = []
   @all_players.each do |player_hash|
     if !@teams.include?(player_hash[:team])
       @teams << player_hash[:team]
     end
   end
-
   erb :index
 end
 
@@ -28,22 +25,12 @@ get('/teams/:team_name') do
   @team_name = params[:team_name]
   @all_players = read_team_data
   @roster = []
+  @all_players.each do |player|
 
-  # TODO: get a list of players into @roster that belong to this team
-
-  @all_players.each do |team|
-    if !@roster.include?(@team_name)
-      @roster << team[:first_name] << team[:last_name]
+    if player[:team] == @team_name
+      @roster << player
     end
     "#{@roster}"
-    # binding.pry
-
-
-  erb :show
   end
+  erb :show
 end
-
-
-# get('/teams/:team_name') do
-# "got here for team #{params[:team_name]}"
-# end
